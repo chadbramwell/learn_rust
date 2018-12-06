@@ -6,3 +6,30 @@ https://doc.rust-lang.org/book/second-edition/ch01-03-hello-cargo.html
 * cargo build --release
 * cargo run
 * cargo check
+
+https://doc.rust-lang.org/book/second-edition/ch02-00-guessing-game-tutorial.html#processing-a-guess
+* variables are immutable by default
+* declare a variable with 'let', declare it as mutable with 'mut'
+* String::new() <- new is a function associated with type String
+* std::io::stdin() <- returns an instance of std::io::Stdin
+* & is a reference
+* references, by default, are immutable.
+* stdin().read_line(&mut guess)
+* read_line returns an io::Result which is defined as Result<T, Error>
+* cargo update
+* extern crate rand;
+* use rand::Rng; <- exposes 'traits' for the gen_range (Chap10 is traits)
+* rand::thread_rng().gen_range(1,101);
+* thread_rng is local to current thread and seeded by OS
+* cargo doc --open
+* use std::cmp::Ordering;
+* match guess.cmp(&num) { Ordering::Less => println!("less"),}
+* a match expression is made up of arms which is a combo of a pattern and code to run if something matches that pattern
+* let guess: u32 = guess.trim().parse(); will panic with a value of -1 but not if we specify a type of i32.
+* parse must be chosen based on return type! sweet
+* loop
+* match for Result<T, Error> { Ok(val) => val, Err(_) => continue }
+* .expect() (panic/crash) -> match (handle gracefully)
+* _ is catchall
+
+next: https://doc.rust-lang.org/book/second-edition/ch03-00-common-programming-concepts.html
