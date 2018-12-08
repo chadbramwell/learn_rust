@@ -73,11 +73,18 @@ fn christmas_carol() {
             "On the {} day of Christmas my true love sent to me",
             days[day]
         );
-        for revday in (0..day + 1).rev() {
-            if revday == 0 && day != 0 {
-                print!("And ");
-            }
-            println!("{}", stanzas[revday]);
+        for day in (1..day + 1).rev() {
+            // woops, this was bad form. we can do this outside the loop!
+            //if revday == 0 && day != 0 {
+            //    print!("And ");
+            //}
+            println!("{}", stanzas[day]);
         }
+        // better form, but also a waste. we could special case 0
+        // to eliminate this if-check
+        if day != 0 {
+            print!("And ");
+        }
+        println!("{}", stanzas[0]);
     }
 }
