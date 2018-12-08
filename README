@@ -1,5 +1,30 @@
 Just a place for me to learn a bit of rust.
 
-I started with the rust book online https://doc.rust-lang.org/book/ to get started.
+I started with the online rust book https://doc.rust-lang.org/book/ (which can also be generated with "rustup doc", cool!).
 
 I'll probably intermix working in that book and doing Advent of Code problems.
+
+What I like:
+* cargo new, run, check
+* immutable by default
+* UTF8 by default
+* char is UTF8 character and that's explicitly different from u8
+* 'arms' as a descriptor for if-check and match pathways
+* break counter * 2;
+* loop
+* built-in .rev()
+* _
+
+Dislikes:
+* No compile-time checking of array bounds, it's all run-time. And here I thought rust was about memory safety.
+* No compile-time type system. (if you want to understand a type, suggestions online are to force a compiler error to give you type info...)
+* Can't print tuples or arrays.
+* Lack of simple "for k,v in a" instead it's "for k,v in a.iter().enumerate()"
+
+Looks promising:
+* crate system for depedency management
+* match (this'll take some time to get used to)
+* destructuring
+
+Confused by:
+* ()
