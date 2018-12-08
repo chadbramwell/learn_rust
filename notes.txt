@@ -1,3 +1,6 @@
+* rustup doc
+* woops! some links below are to an older version of the book..
+
 https://doc.rust-lang.org/book/second-edition/ch01-02-hello-world.html
 * println! calls a Rust macro. If it called a function instead, it would be entered as println (without the !).
 
@@ -32,4 +35,61 @@ https://doc.rust-lang.org/book/second-edition/ch02-00-guessing-game-tutorial.htm
 * .expect() (panic/crash) -> match (handle gracefully)
 * _ is catchall
 
-next: https://doc.rust-lang.org/book/second-edition/ch03-00-common-programming-concepts.html
+https://doc.rust-lang.org/book/ch03-00-common-programming-concepts.html
+* const (despite variables being immutable by default)
+* const must be annotated
+* const can't be the result of a function
+* variable shadowing (as a suggestion for working around mutability without making anything mutable)
+* shadowing also allows type changing
+* let spaces = " "; let spaces = spaces.len();
+* does not work due to type changing: let mut spaces = " "; spaces = spaces.len();
+* two data type subsets: scalar & compound
+* 4 scalar types: integers, floating-point, booleans, characters
+* integer: i8, u8, 16, 32, 64, 128, isize, usize (i/usize = arch)
+* 2s complement [-(2^(n-1)), (2^(n-1)-1)], and u=[0,(2^n)-1]
+* numbers support underscores to aide in readability
+* 98_222 = 98222
+* Hex: 0xff
+* Octal: 0o77
+* Binary: 0b1111_0000
+* Byte (u8 only): b'A'
+* Integer overflow triggers a panic in debug builds!
+* Use Wrapping type if you expect overflow
+* f32, f64
+* default integer is i32, default float is f64
+* char is *not* C/C++ style char. it represents a single UTF8 character.
+* 2 Compound types: tuple and array
+* tuple looks like an indexable
+* let tup = (500, 6.4, 1);
+* let (x,y,z) = tup;  // this is called 'destructuring'
+* let x: (i32, f64, u8) = (500, 6.4, 1); let one = x.2;
+* arrays must have the same type (unlike tuple)
+* arrays have a fixed length
+* let a = [1, 2, 3, 4, 5];
+* arrays allocated on the stack
+* vector type (growable array) comes as part of standard library
+* let a: [i32, 5] = [1, 2, 3, 4, 5];
+* array out of bounds checked at runtime
+
+https://doc.rust-lang.org/book/ch03-03-how-functions-work.html
+* function signitures must declare type for paramaters
+* x = y = 6 is not allowed in rust.
+* every statement is seperate
+* let x = (let y = 6); // error: expected expression, found statement (`let`)
+* rust just got dumb for me. we have a compiler that can do wonderous things, why isn't it helping us? compile-time type information would be useful as a built-in feature. last line is always the return value seems... silly, especially when 'return x + 1;' is okay in a let = func(); but not okay in a let = {...};
+* at least their built-in char vs u8 makes a ton of sense and is awesome. UTF8 support only and by default is wonderful.
+
+https://doc.rust-lang.org/book/ch03-05-control-flow.html
+* blocks of code for an if statement are also called arms (like with match)
+* thought: if blocks are so fundamental to programming, it's a bummer they only work on 1bit of information... but I can't think of something better that isn't just math.... i mean, execution is just 1 instruction at a time... that bit for an if exists to move an instruction pointer to one place... so maybe there isn't something better?
+* loop
+* break
+* break counter * 2;
+* while
+* loop + if + else + break is considered to be so common that while exists
+* for
+* such a stupid statement (because it sets up a bad way to write code and then suggests code that does the exact same thing but with syntactic sugar): "But this approach is error prone; we could cause the program to panic if the index length is incorrect. It’s also slow, because the compiler adds runtime code to perform the conditional check on every element on every iteration through the loop. As a more concise alternative, you can use a for loop ..."
+* "for k,v in a {...}" such an obvious win, but instead we have to "for (k, v) in a.iter().enumerate() {...}"
+* why is ".iter()" required?
+* for n in (1..4).rev() { ... } // only iterates 3 values
+* "More importantly, we’ve now increased the safety of the code and eliminated the chance of bugs that might result from going beyond the end of the array or not going far enough and missing some items." nice try, please solve real programming problems and common mistakes with your language not new programmer mistakes
