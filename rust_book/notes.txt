@@ -93,3 +93,32 @@ https://doc.rust-lang.org/book/ch03-05-control-flow.html
 * why is ".iter()" required?
 * for n in (1..4).rev() { ... } // only iterates 3 values
 * "More importantly, we’ve now increased the safety of the code and eliminated the chance of bugs that might result from going beyond the end of the array or not going far enough and missing some items." nice try, please solve real programming problems and common mistakes with your language not new programmer mistakes
+
+https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
+* ownership rules: each value has one owner, when owner goes out of scope value is dropped
+* let s = String::from("hello");
+* rust calls 'drop' when a variable goes out of scope
+* let s1 = String::from("hello"); let s2 = s1; s1 is now invalid (ownership transferred, Rust error: use of moved value: `s1`).
+* shallow copy, deep copy, move. 3 different but important things to understand.
+* s1 moved into s2.
+* rust never deep-copies automatically. all copies should be considered inexpensive. (I wonder how true that is for structs... C# fell here)
+* clone
+* Rust has traits. (ch10) Copy is a trait on integers so you don't have to implement clone.
+* Copy trait is illegal if your type requires drop (Drop trait).
+* tuples can have the Copy trait if all internal members also have the Copy trait
+* types either move or copy
+* a function that takes a String will perform a move and any uses of the String after passing to that func will error
+* interesting that 'move' is such a new concept to me and I only learned about it from recent C++ stuff... always thought it was specifically a compiler optimization (which it still is) but it's got a broader baseline of importance that Rust grabs onto. I like that.
+* return values can also transfer ownership
+* incoming: references... >_>
+
+https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+* s: &String
+* omgwtfbbq, there's a dereference operator!? '*' ... like C. (ch 8, ch 15)
+* references are immutable by default
+* when I tried to add mutability... it took multiple steps working backwards. At every spot I had to add 'mut' to make it explicit what was going on. Nice!
+* only one mutable reference to a piece of data in a particular scope
+* boo: looks like wiping out reference doesn't fix double-borrow issue. scoping it might work..
+* yep. scoped borrow works. borrow checker isn't as smart as I would expect. :{ ... could be a hard problem or intentional? who knows?
+* they are calling the issues the borrow checker solves: 'data races' (prior to this, I've only seen it as 'data race' for threading bugs and 'data contention' for Load-Hit-Store)
+

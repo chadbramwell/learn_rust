@@ -14,6 +14,7 @@ What I like:
 * loop
 * built-in .rev()
 * _
+* references are immutable by default
 
 Dislikes:
 * No compile-time checking of array bounds, it's all run-time. And here I thought rust was about memory safety.
@@ -25,6 +26,7 @@ Looks promising:
 * crate system for depedency management
 * match (this'll take some time to get used to)
 * destructuring
+* copy vs move as core feature (move by default)
 
 Confused by:
 * ()
