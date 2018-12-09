@@ -1,0 +1,6 @@
+[package]
+name = "dangling"
+version = "0.1.0"
+authors = ["Chad Bramwell <chadbramwell@users.noreply.github.com>"]
+
+[dependencies]

@@ -15,12 +15,16 @@ What I like:
 * built-in .rev()
 * _
 * references are immutable by default
+* slices! can be done in C/C++ but the compiler doesn't help but members in the C/C++ community don't talk about memory ownership much... slices are dependent on a strong understanding of ownership
+* compile time error for string slices
 
 Dislikes:
 * No compile-time checking of array bounds, it's all run-time. And here I thought rust was about memory safety.
 * No compile-time type system. (if you want to understand a type, suggestions online are to force a compiler error to give you type info...)
 * Can't print tuples or arrays.
 * Lack of simple "for k,v in a" instead it's "for k,v in a.iter().enumerate()"
+* no way to tell compiler that a reference is gone within the same scope even if reference variable is mutable
+* warnings sometimes about needing parenthesis, and sometimes not...
 
 Looks promising:
 * crate system for depedency management
@@ -29,4 +33,9 @@ Looks promising:
 * copy vs move as core feature (move by default)
 
 Confused by:
-* ()
+* () type that can be generated with let x = { ... }
+* sometimes () must surround the first set of params in a for loop, sometimes not. destructure rules?
+* slice syntax: let s = String::from("hello world"); let hello = &s[0..5];
+* &s[0..5]  &s[0..=4] // equivalent, = means include last number
+* &s[0..] // slice of whole String
+* &s[..2] // first 2 characters, same as: &s[0..2]

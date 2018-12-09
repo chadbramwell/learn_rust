@@ -85,6 +85,19 @@ fn main() {
         println!("inside scope, r1 borrows... {}", r1);
     }
     println!("{}, {}", s, r1);
+
+    psection("multiple immutable references allowed");
+    let s = String::from("hello");
+    let r1 = &s;
+    let r2 = &s;
+    let r3 = &s;
+    println!("{}{}{}{}", s, r1, r2, r3);
+    //s.push_str(", world!"); // error: cannot borrow `s` as mutable because it is also borrowed as immutable
+    // r1 = &String::from("");
+    // let r2 = 0;
+    // let r3 = 0;
+    // s.push_str(", world!");
+    // println!("{}{}{}{}", s, r1, r2, r3);
 }
 fn modify_string(s: &mut String) {
     s.push_str(", world!");

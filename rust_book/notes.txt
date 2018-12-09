@@ -121,4 +121,16 @@ https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
 * boo: looks like wiping out reference doesn't fix double-borrow issue. scoping it might work..
 * yep. scoped borrow works. borrow checker isn't as smart as I would expect. :{ ... could be a hard problem or intentional? who knows?
 * they are calling the issues the borrow checker solves: 'data races' (prior to this, I've only seen it as 'data race' for threading bugs and 'data contention' for Load-Hit-Store)
+* can have multiple immutable references
+* compiler ain't smart when a reference is ditched... perhaps there's a keyword... either way, compiler is starting to get annoying. still better than C/C++ in a lot of ways...
 
+https://doc.rust-lang.org/book/ch04-03-slices.html
+* slice: return a section of a String
+* bytes.iter().enumerate() returns a tuple (index, &item)
+* string slices must land on a UTF8 character boundary.
+* &str  <--- type for string slice
+* let s = "Hello, world!"; // s is of type &str, it's a slice that points to a specific part of the compiled binary - where the string is!
+* &str are immutable.
+* can take slices of arrays too. type: &[i32]
+
+https://doc.rust-lang.org/book/ch05-00-structs.html
