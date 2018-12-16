@@ -35,7 +35,5 @@ Looks promising:
 Confused by:
 * () type that can be generated with let x = { ... }
 * sometimes () must surround the first set of params in a for loop, sometimes not. destructure rules?
-* slice syntax: let s = String::from("hello world"); let hello = &s[0..5];
-* &s[0..5]  &s[0..=4] // equivalent, = means include last number
-* &s[0..] // slice of whole String
-* &s[..2] // first 2 characters, same as: &s[0..2]
+* unwrap vs expect
+* parse vs to_string

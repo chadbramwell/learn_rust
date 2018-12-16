@@ -132,5 +132,9 @@ https://doc.rust-lang.org/book/ch04-03-slices.html
 * let s = "Hello, world!"; // s is of type &str, it's a slice that points to a specific part of the compiled binary - where the string is!
 * &str are immutable.
 * can take slices of arrays too. type: &[i32]
+* slice syntax: let s = String::from("hello world"); let hello = &s[0..5];
+* &s[0..5]  &s[0..=4] // equivalent, = means include last number
+* &s[0..] // slice of whole String
+* &s[..2] // first 2 characters, same as: &s[0..2]
 
 https://doc.rust-lang.org/book/ch05-00-structs.html
